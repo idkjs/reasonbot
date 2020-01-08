@@ -5,48 +5,48 @@ let userSchema = {
   "properties": {
     "id": {
       "type": "string",
-      "primary": Js.true_
+      "primary": true,
     },
     "first_name": {
-      "type": "string"
+      "type": "string",
     },
     "last_name": {
-      "type": "string"
+      "type": "string",
     },
     "username": {
-      "type": "string"
+      "type": "string",
     },
     "is_bot": {
-      "type": "boolean"
+      "type": "boolean",
     },
     "language_code": {
-      "type": "string"
+      "type": "string",
     },
     "created_at": {
-      "type": "number"
+      "type": "number",
     },
     "updated_at": {
-      "type": "number"
+      "type": "number",
     },
     "version": {
       "type": "number",
-      "default": 0
-    }
-  }
+      "default": 0,
+    },
+  },
 };
 
 let onCreate = d => {
   let now = Js.Date.now();
-  d##created_at#=now;
-  d##updated_at#=now;
+  d##created_at #= now;
+  d##updated_at #= now;
   ();
 };
 
 let onUpdate = d => {
   let now = Js.Date.now();
-  d##updated_at#=now;
+  d##updated_at #= now;
   let ver = d##version + 1;
-  d##version#=ver;
+  d##version #= ver;
   ();
 };
 
@@ -56,11 +56,11 @@ let createUser = (db: Rxdb.rxDatabase, cb: Rxdb.rxCollection => unit) =>
        col
        |> Rxdb.preInsert(
             [@bs.this] ((_, document) => onCreate(document)),
-            Js.false_
+            false,
           )
        |> Rxdb.preSave(
             [@bs.this] ((_, document) => onUpdate(document)),
-            Js.false_
+            false,
           )
        |> ignore;
        cb(col);
@@ -70,8 +70,8 @@ let createUser = (db: Rxdb.rxDatabase, cb: Rxdb.rxCollection => unit) =>
 
 let upsertObj = (col: Rxdb.rxCollection, user: 'a) => {
   col
-  |> Rxdb.updateOne({"id": user##id}, user, {"upsert": Js.true_}, err =>
-       if (Js.test(err)) {
+  |> Rxdb.updateOne({"id": user##id}, user, {"upsert": true}, err =>
+       if (Js.isNullable(err)) {
          Js.log("Error occured during upsert:");
          Js.log(err);
          ();

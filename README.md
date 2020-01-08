@@ -1,18 +1,4 @@
-# Basic Reason Template
+# Reason Telegram Bot
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+## Forked from <https://github.com/mkhoeini/wiki3dabot>
 
-# Build
-```
-npm run build
-```
-
-# Build + Watch
-
-```
-npm run start
-```
-
-
-# Editor
-If you use `vscode`, Press `Windows + Shift + B` it will build automatically
