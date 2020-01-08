@@ -18,21 +18,19 @@ external createTelegramBot: (string, botConfig) => telegramBotApi =
 external on: (string, 'a => unit) => telegramBotApi = "on";
 
 type keyboardMarkupKey = {
-  .
-  "text": string,
-  "switch_inline_query_current_chat": Js.undefined(string),
-  "callback_data": Js.undefined(string),
+  text: string,
+  switch_inline_query_current_chat: Js.undefined(string),
+  callback_data: Js.undefined(string),
 };
 
 [@bs.send.pipe: telegramBotApi]
 external sendMessage: (float, string, 'a) => telegramBotApi = "sendMessage";
 
 type message = {
-  .
-  "message_id": float,
-  "text": Js.undefined(string),
-  "date": float,
-  "chat": {.},
-  "from": {. "id": float},
-  "entities": array({.}),
+  message_id: float,
+  text: Js.undefined(string),
+  date: float,
+  chat: {.},
+  from: {. "id": float},
+  entities: array({.}),
 };

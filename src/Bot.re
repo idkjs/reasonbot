@@ -1,8 +1,10 @@
 
 Dotenv.config();
 
-// let token: string =
-//   Js.Dict.get(Node.Process.process##env, "TOKEN")->Belt.Option.getExn;
+/* using  Belt.Option.getExn */
+// let token: string = Js.Dict.get(Node.Process.process##env, "TOKEN")->Belt.Option.getExn;
+
+/* token using  Js.Dict.unsafeGet */
 let token: string = Js.Dict.unsafeGet(Node.Process.process##env, "TOKEN");
 let port = 9000;
 

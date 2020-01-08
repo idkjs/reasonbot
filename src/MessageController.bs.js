@@ -4,35 +4,33 @@
 var User$Reasonbot = require("./User.bs.js");
 
 var defaultKeys = {
-  reply_markup: {
-    inline_keyboard: /* array */[
-      /* array */[{
-          text: "\xd8\xac\xd8\xb3\xd8\xaa\xd8\xac\xef\xbf\xbd\x88\xef\xbf\xbd\x8c \xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf",
-          switch_inline_query_current_chat: "",
-          callback_data: undefined
-        }],
-      /* array */[{
-          text: "\xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xac\xd8\xaf\xef\xbf\xbd\x8c\xd8\xaf",
-          switch_inline_query_current_chat: undefined,
-          callback_data: "song_latest"
-        }],
-      /* array */[{
-          text: "\xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xa8\xd8\xb1\xd8\xaa\xd8\xb1",
-          switch_inline_query_current_chat: undefined,
-          callback_data: "song_top"
-        }],
-      /* array */[{
-          text: "\xd8\xa2\xef\xbf\xbd\x84\xd8\xa8\xef\xbf\xbd\x88\xef\xbf\xbd\x85\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xac\xd8\xaf\xef\xbf\xbd\x8c\xd8\xaf",
-          switch_inline_query_current_chat: undefined,
-          callback_data: "album_latest"
-        }],
-      /* array */[{
-          text: "\xd8\xa2\xef\xbf\xbd\x84\xd8\xa8\xef\xbf\xbd\x88\xef\xbf\xbd\x85\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xa8\xd8\xb1\xd8\xaa\xd8\xb1",
-          switch_inline_query_current_chat: undefined,
-          callback_data: "album_top"
-        }]
-    ]
-  }
+  reply_markup: /* array */[
+    /* array */[{
+        text: "\xd8\xac\xd8\xb3\xd8\xaa\xd8\xac\xef\xbf\xbd\x88\xef\xbf\xbd\x8c \xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf",
+        switch_inline_query_current_chat: "",
+        callback_data: undefined
+      }],
+    /* array */[{
+        text: "\xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xac\xd8\xaf\xef\xbf\xbd\x8c\xd8\xaf",
+        switch_inline_query_current_chat: undefined,
+        callback_data: "song_latest"
+      }],
+    /* array */[{
+        text: "\xd8\xa2\xef\xbf\xbd\x87\xef\xbf\xbd\x86\xda\xaf\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xa8\xd8\xb1\xd8\xaa\xd8\xb1",
+        switch_inline_query_current_chat: undefined,
+        callback_data: "song_top"
+      }],
+    /* array */[{
+        text: "\xd8\xa2\xef\xbf\xbd\x84\xd8\xa8\xef\xbf\xbd\x88\xef\xbf\xbd\x85\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xac\xd8\xaf\xef\xbf\xbd\x8c\xd8\xaf",
+        switch_inline_query_current_chat: undefined,
+        callback_data: "album_latest"
+      }],
+    /* array */[{
+        text: "\xd8\xa2\xef\xbf\xbd\x84\xd8\xa8\xef\xbf\xbd\x88\xef\xbf\xbd\x85\xef\xbf\xbd\x87\xd8\xa7\xef\xbf\xbd\x8c \xd8\xa8\xd8\xb1\xd8\xaa\xd8\xb1",
+        switch_inline_query_current_chat: undefined,
+        callback_data: "album_top"
+      }]
+  ]
 };
 
 function sendDefaultKeys(bot, id) {
@@ -42,13 +40,11 @@ function sendDefaultKeys(bot, id) {
 
 function searchKey(msg) {
   return {
-          reply_markup: {
-            inline_keyboard: /* array */[/* array */[{
-                  text: "\xd8\xac\xd8\xb3\xd8\xaa\xd8\xac\xef\xbf\xbd\x88",
-                  switch_inline_query_current_chat: msg,
-                  callback_data: undefined
-                }]]
-          }
+          reply_markup: /* array */[/* array */[{
+                text: "\xd8\xac\xd8\xb3\xd8\xaa\xd8\xac\xef\xbf\xbd\x88",
+                switch_inline_query_current_chat: msg,
+                callback_data: undefined
+              }]]
         };
 }
 
