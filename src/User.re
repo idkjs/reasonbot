@@ -55,11 +55,11 @@ let createUser = (db: Rxdb.rxDatabase, cb: Rxdb.rxCollection => unit) =>
   |> Js.Promise.then_(col => {
        col
        |> Rxdb.preInsert(
-            [@bs.this] ((_, document) => onCreate(document)),
+            [@bs.this] (_, document) => onCreate(document),
             false,
           )
        |> Rxdb.preSave(
-            [@bs.this] ((_, document) => onUpdate(document)),
+            [@bs.this] (_, document) => onUpdate(document),
             false,
           )
        |> ignore;

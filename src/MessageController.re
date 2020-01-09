@@ -1,44 +1,44 @@
 type keyMarkup = {reply_markup: inline_keyboard}
 and inline_keyboard = array(array(TgBotJs.keyboardMarkupKey));
-let defaultKeys: keyMarkup = {
-  reply_markup: [|
-    [|
-      {
-        text: "جستج�\136�\140 آ�\135�\134گ",
-        switch_inline_query_current_chat: Js.Undefined.return(""),
-        callback_data: Js.undefined,
-      },
-    |],
-    [|
-      {
-        text: "آ�\135�\134گ�\135ا�\140 جد�\140د",
-        switch_inline_query_current_chat: Js.undefined,
-        callback_data: Js.Undefined.return("song_latest"),
-      },
-    |],
-    [|
-      {
-        text: "آ�\135�\134گ�\135ا�\140 برتر",
-        switch_inline_query_current_chat: Js.undefined,
-        callback_data: Js.Undefined.return("song_top"),
-      },
-    |],
-    [|
-      {
-        text: "آ�\132ب�\136�\133�\135ا�\140 جد�\140د",
-        switch_inline_query_current_chat: Js.undefined,
-        callback_data: Js.Undefined.return("album_latest"),
-      },
-    |],
-    [|
-      {
-        text: "آ�\132ب�\136�\133�\135ا�\140 برتر",
-        switch_inline_query_current_chat: Js.undefined,
-        callback_data: Js.Undefined.return("album_top"),
-      },
-    |],
+
+let inline_keyboard: inline_keyboard = [|
+  [|
+    {
+      text: "جستج�\136�\140 آ�\135�\134گ",
+      switch_inline_query_current_chat: Js.Undefined.return(""),
+      callback_data: Js.undefined,
+    },
   |],
-};
+  [|
+    {
+      text: "آ�\135�\134گ�\135ا�\140 جد�\140د",
+      switch_inline_query_current_chat: Js.undefined,
+      callback_data: Js.Undefined.return("song_latest"),
+    },
+  |],
+  [|
+    {
+      text: "آ�\135�\134گ�\135ا�\140 برتر",
+      switch_inline_query_current_chat: Js.undefined,
+      callback_data: Js.Undefined.return("song_top"),
+    },
+  |],
+  [|
+    {
+      text: "آ�\132ب�\136�\133�\135ا�\140 جد�\140د",
+      switch_inline_query_current_chat: Js.undefined,
+      callback_data: Js.Undefined.return("album_latest"),
+    },
+  |],
+  [|
+    {
+      text: "آ�\132ب�\136�\133�\135ا�\140 برتر",
+      switch_inline_query_current_chat: Js.undefined,
+      callback_data: Js.Undefined.return("album_top"),
+    },
+  |],
+|];
+let defaultKeys: keyMarkup = {reply_markup: inline_keyboard};
 
 let sendDefaultKeys = (bot: TgBotJs.telegramBotApi, id: float) =>
   bot
@@ -76,14 +76,16 @@ let handler =
       user: Rxdb.rxCollection,
       bot: TgBotJs.telegramBotApi,
       msg: TgBotJs.message,
-    ) =>
+    ) => {
+  let msgFromId: 'a = {"id": msg.from.id};
   switch (Js.Undefined.toOption(msg.text)) {
   | None => ()
   | Some("/start") =>
-    User.upsertObj(user, msg.from);
-    sendDefaultKeys(bot, msg.from##id);
-  | Some("/menu") => sendDefaultKeys(bot, msg.from##id)
+    User.upsertObj(user, msgFromId);
+    sendDefaultKeys(bot, msg.from.id);
+  | Some("/menu") => sendDefaultKeys(bot, msg.from.id)
   | _ =>
-    User.upsertObj(user, msg.from);
-    sendSearchKey(bot, msg.from##id);
+    User.upsertObj(user, msgFromId);
+    sendSearchKey(bot, msg.from.id);
   };
+};

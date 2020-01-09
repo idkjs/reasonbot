@@ -3,7 +3,8 @@
 
 var Rxdb = require("rxdb");
 
-((require('rxdb').plugin(require('pouchdb-adapter-memory'))));
+require('rxdb').plugin(require('pouchdb-adapter-memory'))
+;
 
 function create(name) {
   return Rxdb.create({

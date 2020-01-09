@@ -1,11 +1,6 @@
+[%raw {| require('dotenv').config() |}];
+let token: string = [%raw "process.env.TOKEN"];
 
-Dotenv.config();
-
-/* using  Belt.Option.getExn */
-// let token: string = Js.Dict.get(Node.Process.process##env, "TOKEN")->Belt.Option.getExn;
-
-/* token using  Js.Dict.unsafeGet */
-let token: string = Js.Dict.unsafeGet(Node.Process.process##env, "TOKEN");
 let port = 9000;
 
 let createBot = (~polling: bool=true, cb) =>

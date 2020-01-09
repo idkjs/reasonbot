@@ -2,13 +2,11 @@
 'use strict';
 
 var Curry = require("bs-platform/lib/js/curry.js");
-var Dotenv = require("dotenv");
-var Process = require("process");
 var NodeTelegramBotApi = require("node-telegram-bot-api");
 
-Dotenv.config(undefined);
+(( require('dotenv').config() ));
 
-var token = Process.env["TOKEN"];
+var token = (process.env.TOKEN);
 
 function createBot($staropt$star, cb) {
   var polling = $staropt$star !== undefined ? $staropt$star : true;
